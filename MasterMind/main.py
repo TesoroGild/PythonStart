@@ -31,20 +31,51 @@ def exit_game():
     exit()
 
 def mastermind():
-    colors = ["B", "R", "Y", "W"]
-    systeme_combinaison1 = [random.choice(colors) for i in range(4)]
-    print(systeme_combinaison1)
-    systeme_combinaison2 = [random.choices(colors, k = 4)]
-    print(systeme_combinaison2)
-    user_choice = input("Veuillez choisir une combinaison de 4 chiffres : ")
-    verification(user_choice)
+    #Possible ways to generate the systeme_combinaison
+    #systeme_combinaison = [random.choice(colors) for i in range(4)]
+    #print(systeme_combinaison)
+    combinaison_length = length_choice()
+    systeme_combinaison = random.choices(colors, k = combinaison_length)
+    is_user_input_valid = False
+    while not is_user_input_valid:
+        user_choice = input("Veuillez choisir une combinaison de 4 lettres entre B, R, Y et W : ")
+        user_combinaison = list(user_choice)
+        is_user_input_valid = user_combinaison_validation(user_combinaison)
+    combinations_comparison(systeme_combinaison, user_combinaison)
 
-def verification(user_choice):
-    if user_choice == "1":
+def length_choice():
+    combinaison_length = input("Quelle longueur souhaitez-vous pour les combinaisons de cette partie? (Minumum 4) : ")
+    while True:
+        if combinaison_length.isdigit():
+            tmp = int(combinaison_length)
+            if tmp < 4:
+                combinaison_length = input("Veuillez entrer un nombre >= 4 : ")
+            else:
+                return tmp
+        else:
+            combinaison_length = input("Veuillez entrer un nombre >= 4 : ")
+
+def user_combinaison_validation(user_combinaison):
+    for i in range(len(user_combinaison)):
+        if user_combinaison[i] not in colors:
+            print("Veuillez entrer une combinaison de 4 chiffres.")
+            return False
+    return True
+
+def color_match_check():
+    print("To Do...")
+
+def position_match_check():
+    print("To Do...")
+
+def combinations_comparison(systeme_combinaison, user_combinaison):
+    color_match_check()
+    position_match_check()
+    if user_combinaison == "1":
         print("1")
-    elif user_choice == "2":
+    elif user_combinaison == "2":
         print("2")
-    elif user_choice == "3":
+    elif user_combinaison == "3":
         print("3")
     else:
         print("4")
@@ -56,6 +87,7 @@ def verification(user_choice):
 ####################
 welcome()
 continue_loop = True
+colors = ["B", "R", "Y", "W"]
 while continue_loop:
     try:
         menu()
