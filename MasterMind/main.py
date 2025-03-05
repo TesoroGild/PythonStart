@@ -1,3 +1,13 @@
+####################
+#      IMPORT      #
+####################
+import random
+
+
+
+####################
+#     FONCTIONS    #
+####################
 def welcome():
     print("Bienvenue au MasterMind.")
     print("Cette version a été crée dans le but d'apprendre le langage Python. Nous espérons qu'elle vous plaira.")
@@ -21,7 +31,11 @@ def exit_game():
     exit()
 
 def mastermind():
-    game_choice = "To Do..."
+    colors = ["B", "R", "Y", "W"]
+    systeme_combinaison1 = [random.choice(colors) for i in range(4)]
+    print(systeme_combinaison1)
+    systeme_combinaison2 = [random.choices(colors, k = 4)]
+    print(systeme_combinaison2)
     user_choice = input("Veuillez choisir une combinaison de 4 chiffres : ")
     verification(user_choice)
 
@@ -34,6 +48,8 @@ def verification(user_choice):
         print("3")
     else:
         print("4")
+
+
 
 ####################
 #       MAIN       #
@@ -58,4 +74,4 @@ if chosen_menu == "2":
 if chosen_menu == "3":
     about()
 if chosen_menu == "1":
-    print("1")
+    mastermind()
