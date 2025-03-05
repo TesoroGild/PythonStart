@@ -27,7 +27,7 @@ def about():
     print("To Do...")
 
 def exit_game():
-    print("Merci d'avoir joué.")
+    print("Merci d'avoir joué et à bientôt!!!")
     exit()
 
 def mastermind():
@@ -38,9 +38,12 @@ def mastermind():
     systeme_combinaison = random.choices(colors, k = combinaison_length)
     is_user_input_valid = False
     while not is_user_input_valid:
-        user_choice = input("Veuillez choisir une combinaison de 4 lettres entre B, R, Y et W : ")
+        user_choice = input(f"Veuillez choisir une combinaison de {combinaison_length} lettres entre B, R, Y et W : ")
         user_combinaison = list(user_choice)
-        is_user_input_valid = user_combinaison_validation(user_combinaison)
+        if len(user_combinaison) != combinaison_length:
+            print(f"Combinaison de longueur {combinaison_length} requise.")
+        else:
+            is_user_input_valid = user_combinaison_validation(combinaison_length, user_combinaison)
     combinations_comparison(systeme_combinaison, user_combinaison)
 
 def length_choice():
@@ -55,30 +58,23 @@ def length_choice():
         else:
             combinaison_length = input("Veuillez entrer un nombre >= 4 : ")
 
-def user_combinaison_validation(user_combinaison):
-    for i in range(len(user_combinaison)):
-        if user_combinaison[i] not in colors:
-            print("Veuillez entrer une combinaison de 4 chiffres.")
+def user_combinaison_validation(combinaison_length, user_combinaison):
+    for i in range(combinaison_length):
+        if user_combinaison[i].upper() not in colors:
+            print("Seuls les lettres B, R, Y et W sont autorisées.")
             return False
     return True
 
 def color_match_check():
-    print("To Do...")
+    print("color_match_check To Do...")
 
 def position_match_check():
-    print("To Do...")
+    print("position_match_check To Do...")
 
 def combinations_comparison(systeme_combinaison, user_combinaison):
+    print("combinations_comparison : Next step...")
     color_match_check()
     position_match_check()
-    if user_combinaison == "1":
-        print("1")
-    elif user_combinaison == "2":
-        print("2")
-    elif user_combinaison == "3":
-        print("3")
-    else:
-        print("4")
 
 
 
