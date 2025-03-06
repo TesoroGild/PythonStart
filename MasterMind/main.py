@@ -31,49 +31,67 @@ def exit_game():
     exit()
 
 def mastermind():
-    #Possible ways to generate the systeme_combinaison
-    #systeme_combinaison = [random.choice(colors) for i in range(4)]
-    #print(systeme_combinaison)
-    combinaison_length = length_choice()
-    systeme_combinaison = random.choices(colors, k = combinaison_length)
-    is_user_input_valid = False
-    while not is_user_input_valid:
-        user_choice = input(f"Veuillez choisir une combinaison de {combinaison_length} lettres entre B, R, Y et W : ")
-        user_combinaison = list(user_choice)
-        if len(user_combinaison) != combinaison_length:
-            print(f"Combinaison de longueur {combinaison_length} requise.")
+    print("Les couleurs pour cette partie sont : B, R, Y, P, G, O, V, W.")
+    #Possible ways to generate the system_combination
+    #system_combination = [random.choice(colors) for i in range(4)]
+    #print(system_combination)
+    number_of_turns = 10 #Can be change after
+    combination_length = length_choice()
+    system_combination = random.choices(colors, k = combination_length)
+    is_user_combination_valid = False
+    while number_of_turns > 0:
+        print(f"Tours restants : {number_of_turns}")
+        while not is_user_combination_valid:
+            user_choice = input(f"Veuillez choisir une combinaison de {combination_length} couleurs : ")
+            user_combination = list(user_choice)
+            if len(user_combination) != combination_length:
+                print(f"Combinaison de longueur {combination_length} requise.")
+            else:
+                is_user_combination_valid = user_combination_validation(combination_length, user_combination)
+        correct_position = combinations_comparison(combination_length, system_combination, user_combination)
+        if correct_position == combination_length:
+            print("Bravo, vous avez gagné!")
+            break
         else:
-            is_user_input_valid = user_combinaison_validation(combinaison_length, user_combinaison)
-    combinations_comparison(systeme_combinaison, user_combinaison)
+            number_of_turns -= 1
+            is_user_combination_valid = False
+    if number_of_turns == 0:
+        print(f"Dommage, vous avez perdu. La bonne combinaison était : {system_combination}")
 
 def length_choice():
-    combinaison_length = input("Quelle longueur souhaitez-vous pour les combinaisons de cette partie? (Minumum 4) : ")
+    combination_length = input("Quelle longueur souhaitez-vous pour les combinaisons de cette partie? (Minumum 4) : ")
     while True:
-        if combinaison_length.isdigit():
-            tmp = int(combinaison_length)
+        if combination_length.isdigit():
+            tmp = int(combination_length)
             if tmp < 4:
-                combinaison_length = input("Veuillez entrer un nombre >= 4 : ")
+                combination_length = input("Veuillez entrer un nombre >= 4 : ")
             else:
                 return tmp
         else:
-            combinaison_length = input("Veuillez entrer un nombre >= 4 : ")
+            combination_length = input("Veuillez entrer un nombre >= 4 : ")
 
-def user_combinaison_validation(combinaison_length, user_combinaison):
-    for i in range(combinaison_length):
-        if user_combinaison[i].upper() not in colors:
+def user_combination_validation(combination_length, user_combination):
+    for i in range(combination_length):
+        if user_combination[i].upper() not in colors:
             print("Les couleurs disponibles pour ce jeu sont B, R, Y, P, G, O, V, et W.")
             return False
     return True
 
-def color_match_check():
-    print("color_match_check To Do...")
-
-def position_match_check():
-    print("position_match_check To Do...")
-
-def combinations_comparison(systeme_combinaison, user_combinaison):
-    position_match_check()
-    color_match_check()
+def combinations_comparison(combination_length, system_combination, user_combination):
+    correct_position = 0
+    wrong_position = 0
+    for i in range(combination_length):
+        print("++++++++++++++++++++++++++++++")
+        for j in range(combination_length):
+            print("----------------------------")
+            if system_combination[i] == user_combination[j]:
+                print("********************************")
+                if i == j:
+                    correct_position += 1
+                else:
+                    wrong_position += 1
+    print(f"{correct_position} couleurs bien placées et {wrong_position} couleurs mal placées.")
+    return correct_position
     
 
 
@@ -102,4 +120,16 @@ if chosen_menu == "2":
 if chosen_menu == "3":
     about()
 if chosen_menu == "1":
-    mastermind()
+    replay = True
+    while replay:
+        mastermind()
+        is_replay_input_valid = False
+        while not is_replay_input_valid:
+            replay_input = input("Voulez-vous rejouer? (O/N) : ")
+            if replay_input.upper() != "O" and replay_input.upper() != "N":
+                print("Veuillez entrer O ou N.")
+            else:
+                is_replay_input_valid = True
+                if replay_input.upper() == "N":
+                    replay = False
+    exit_game()
