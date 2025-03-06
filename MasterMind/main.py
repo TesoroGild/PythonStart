@@ -61,7 +61,7 @@ def length_choice():
 def user_combinaison_validation(combinaison_length, user_combinaison):
     for i in range(combinaison_length):
         if user_combinaison[i].upper() not in colors:
-            print("Seuls les lettres B, R, Y et W sont autorisées.")
+            print("Les couleurs disponibles pour ce jeu sont B, R, Y, P, G, O, V, et W.")
             return False
     return True
 
@@ -72,9 +72,9 @@ def position_match_check():
     print("position_match_check To Do...")
 
 def combinations_comparison(systeme_combinaison, user_combinaison):
-    print("combinations_comparison : Next step...")
-    color_match_check()
     position_match_check()
+    color_match_check()
+    
 
 
 
@@ -83,7 +83,7 @@ def combinations_comparison(systeme_combinaison, user_combinaison):
 ####################
 welcome()
 continue_loop = True
-colors = ["B", "R", "Y", "W"]
+colors = ["B", "R", "Y", "P", "G", "O", "V", "W"]
 while continue_loop:
     try:
         menu()
