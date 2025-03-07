@@ -38,6 +38,7 @@ def mastermind():
     number_of_turns = 10 #Can be change after
     combination_length = length_choice()
     system_combination = random.choices(colors, k = combination_length)
+    print(system_combination)
     is_user_combination_valid = False
     while number_of_turns > 0:
         print(f"Tours restants : {number_of_turns}")
@@ -81,15 +82,29 @@ def combinations_comparison(combination_length, system_combination, user_combina
     correct_position = 0
     wrong_position = 0
     for i in range(combination_length):
-        print("++++++++++++++++++++++++++++++")
-        for j in range(combination_length):
-            print("----------------------------")
-            if system_combination[i] == user_combination[j]:
-                print("********************************")
+        # print(f"i = {i}")
+        # print(system_combination[i])
+        find_letter = False
+        j = 0
+        while not find_letter and j < combination_length:
+            print("1-ICI")
+        #for j in range(combination_length):
+            # print(f"j = {j}")
+            # print(user_combination[j])
+            if system_combination[i] == user_combination[j].upper():
                 if i == j:
+                    #print("********************************")
                     correct_position += 1
                 else:
+                    print(f"i = {i}")
+                    print(system_combination[i])
+                    print(f"j = {j}")
+                    print(user_combination[j])
                     wrong_position += 1
+                find_letter = True
+                j = 0
+            else:
+                j += 1
     print(f"{correct_position} couleurs bien placées et {wrong_position} couleurs mal placées.")
     return correct_position
     
