@@ -20,7 +20,31 @@ def menu():
 
 def rules():
     print("Regles :")
-    print("To Do...")
+    print("""Le Mastermind ou Master Mind est un jeu de société pour deux joueurs dont le but est de trouver un code (couleur et position de 4 ou 5 pions) en 10 ou 12 coups.
+          
+          Le jeu se joue à deux : un codificateur et un décodeur.
+          
+          Le but est de deviner, par déductions successives, la couleur et la position des 4 ou 5 pions (selon les versions du jeu) cachés derrière un écran. Les débutants peuvent adopter une formule moins difficile en ne cachant que 3 ou 4 pions et en n'utilisant que 6 couleurs au lieu de 8. C'est une question de convention préalable.
+
+          Déroulement du jeu : le codificateur pose à l'endroit prévu à cet effet, les 4 ou 5 pions de son choix. Il doit prendre soin de ne pas révéler la couleur et la répartition dans les trous des pions. Rien ne l'empêche d'en choisir plusieurs d'une même couleur. Les versions plus modernes disposent d'un système intégré qui permet cette discrétion. 
+          
+          Son adversaire, le décodeur, est chargé de déchiffrer ce code secret. Il doit le faire en 10 ou 12 coups au plus. Il place 4 ou 5 pions dans les trous de la première rangée immédiatement près de lui. Si l'un des pions correspond par sa position et sa couleur à un pion caché derrière l'écran, le codificateur l'indique en plaçant une fiche noire dans l'un des trous de marque, sur le côté droit correspondant du plateau. Si l'un des pions correspond uniquement par sa couleur, le Codificateur l'indique par une fiche blanche dans l'un des trous de marque. S'il n'y a aucune correspondance, il ne marque rien.
+          
+          Le décodeur continue de poser des pions par rangées successives. La tactique consiste à sélectionner en fonction des coups précédents, couleurs et positions, de manière à obtenir le maximum d'informations de la réponse du partenaire puisque le nombre de propositions est limité par le nombre de rangées de trous du jeu. Dans la plupart des cas, il s'efforce de se rapprocher le plus possible de la solution, compte tenu des réponses précédentes, mais il peut aussi former une combinaison dans le seul but de vérifier une partie des conclusions des coups précédents et de faire en conséquence la proposition la plus propice à la déduction d'une nouvelle information.
+          
+          Quand il est arrivé, au bout d'un certain nombre de coups, à placer les 4 ou 5 pions qui correspondent exactement par la couleur et la position à ceux du code, la manche est terminée.
+          
+          À la fin de la manche, le codificateur obtient 1 point par rangée de pions d'investigation placée par l'adversaire. Il déplace sa fiche de marque sur sa ligne de score.
+          
+          La partie se joue en un nombre pair de manches de façon à équilibrer les chances en inversant les rôles à la fin de chaque manche. Celui qui était codificateur devient décodeur et inversement.
+
+          Le vainqueur est celui qui, une fois le même nombre de manches remportées, a marqué le plus de points.
+          
+          Il a donc fallu à son adversaire plus de coups pour déchiffrer les codes.
+
+          La variante du jeu avec 4 pions et 6 couleurs permet 64 = 1 296 combinaisons ; celle avec 5 pions et 8 couleurs 85 = 32 768 combinaisons.
+
+          Une autre variante permet 59 049 combinaisons : elle se joue de la même façon mais avec la possibilité de laisser des trous libres entre ses pions, ce qui équivaut à créer une neuvième couleur fictive. Il a donc la possibilité de laisser un ou plusieurs trous inoccupés derrière l'écran. Si le décodeur laisse un espace libre en face d'un pion caché, il s'est trompé et le codificateur ne pose aucune fiche. C'est comme si le décodeur avait proposé un pion ne correspondant à aucun du code secret.""")
 
 def about():
     print("A propos :")
