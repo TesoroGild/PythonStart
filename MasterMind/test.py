@@ -103,13 +103,13 @@ def test_8(self):
     self.assertEqual(correct_position, 4)
     self.assertEqual(wrong_position, 0)
 
-if __name__ == '__main__':
-    test_winning_match()
-    test_no_correct_position()
-    test_all_colors_()
-    test_4()
-    test_5()
-    test_6()
-    test_7()
-    test_8()
-    print("Everything passed")
+# if __name__ == '__main__':
+#     test_winning_match()
+#     test_no_correct_position()
+#     test_all_colors_()
+#     test_4()
+#     test_5()
+#     test_6()
+#     test_7()
+#     test_8()
+#     print("Everything passed")
