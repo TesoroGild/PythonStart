@@ -36,16 +36,16 @@ def mastermind():
     #system_combination = [random.choice(colors) for i in range(4)]
     number_of_turns = 10 # Can be change after
     combination_length = length_choice()
-    #system_combination = random.choices(colors, k = combination_length)
+    system_combination = random.choices(colors, k = combination_length)
     # Entrees de test
     # 1- G, O, V, W
     # 2- P, Y, R, B
     # 3- R, O, V, W
     # 4- B, G, O, V
 
-    system_combination = ["B", "B", "B", "B"]
+    #system_combination = ["B", "B", "B", "B"]
     #system_combination = ["B", "B", "B", "O"]
-    # system_combination = ["B", "B", "Y", "Y"]
+    #system_combination = ["B", "B", "Y", "Y"]
 
     print(system_combination)
     is_user_combination_valid = False
@@ -90,36 +90,39 @@ def user_combination_validation(combination_length, user_combination):
 def combinations_comparison(combination_length, system_combination, user_combination):
     correct_position = 0
     wrong_position = 0
-    value_checked = []
+    indexes_to_check = list(range(combination_length))
     for i in range(combination_length):
-    #for i in valid_indexes:
+        # print(f"i = {i}")
+        # print(user_combination[i])
+        # print(system_combination[i])
+        if user_combination[i].upper() == system_combination[i]:
+            correct_position += 1
+            indexes_to_check.remove(i)
+            #indexes_to_check.pop(i)
+    
+    #print(f"les indices restants = {indexes_to_check}")
+    system_indexes_to_check = indexes_to_check.copy()
+
+    for i in indexes_to_check:
+    #for i in range(combination_length):
         # print(f"i = {i}")
         # print(system_combination[i])
-        find_letter = False
-        j = 0
-        while not find_letter and j < combination_length:
+        for j in system_indexes_to_check:
             # print("1-ICI")
         #for j in range(combination_length):
             # print(f"j = {j}")
             # print(user_combination[j])
-            if j not in value_checked:
                 if user_combination[i].upper() == system_combination[j]:
-                    if i == j:
-                        #print("********************************")
-                        correct_position += 1
-                    else:
-                        print(f"user = {i}")
-                        print(user_combination[i])
-                        print(f"system = {j}")
-                        print(system_combination[j])
-                        wrong_position += 1
-                    value_checked.append(j)
-                    find_letter = True
-                    j = 0
-                else:
-                    j += 1
-            else:
-                j += 1
+                    # print(f"user = {i}")
+                    # print(user_combination[i])
+                    # print(f"system = {j}")
+                    # print(system_combination[j])
+                    wrong_position += 1
+                    system_indexes_to_check.remove(j)
+                    # print(f"les indices system restants = {system_indexes_to_check}")
+                    # print(f"les indices user restants = {indexes_to_check}")
+                    #system_indexes_to_check.pop(j)
+                    break
     print(f"{correct_position} couleurs bien placées et {wrong_position} couleurs mal placées.")
     return correct_position
     
