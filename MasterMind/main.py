@@ -82,7 +82,7 @@ def mastermind():
                 print(f"Combinaison de longueur {combination_length} requise.")
             else:
                 is_user_combination_valid = user_combination_validation(combination_length, user_combination)
-        correct_position = combinations_comparison(combination_length, system_combination, user_combination)
+        correct_position, wrong_position = combinations_comparison(combination_length, system_combination, user_combination)
         if correct_position == combination_length:
             print("Bravo, vous avez gagné!")
             break
@@ -148,7 +148,7 @@ def combinations_comparison(combination_length, system_combination, user_combina
                     #system_indexes_to_check.pop(j)
                     break
     print(f"{correct_position} couleurs bien placées et {wrong_position} couleurs mal placées.")
-    return correct_position
+    return correct_position, wrong_position
     
 
 
