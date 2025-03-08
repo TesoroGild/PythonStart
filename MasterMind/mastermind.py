@@ -82,7 +82,7 @@ def mastermind():
             if len(user_combination) != combination_length:
                 print(f"Combinaison de longueur {combination_length} requise.")
             else:
-                is_user_combination_valid = user_combination_validation(combination_length, user_combination)
+                is_user_combination_valid = user_combination_validation(colors, combination_length, user_combination)
         correct_position = combinations_comparison(combination_length, system_combination, user_combination)
         if correct_position == combination_length:
             print("Bravo, vous avez gagné!")
@@ -105,7 +105,7 @@ def length_choice():
         else:
             combination_length = input("Veuillez entrer un nombre >= 4 : ")
 
-def user_combination_validation(combination_length, user_combination):
+def user_combination_validation(colors, combination_length, user_combination):
     for i in range(combination_length):
         if user_combination[i].upper() not in colors:
             print("Les couleurs disponibles pour ce jeu sont B, R, Y, P, G, O, V, et W.")
