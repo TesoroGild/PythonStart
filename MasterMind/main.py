@@ -5,7 +5,6 @@ from mastermind import *
 ####################
 welcome()
 continue_loop = True
-colors = ["B", "R", "Y", "P", "G", "O", "V", "W"]
 while continue_loop:
     try:
         menu()
