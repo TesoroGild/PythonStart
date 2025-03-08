@@ -48,7 +48,7 @@ def rules():
 
 def about():
     print("A propos :")
-    print("To Do...")
+    print("BG Copyright 2025")
 
 def exit_game():
     print("Merci d'avoir joué et à bientôt!!!")
