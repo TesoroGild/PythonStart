@@ -1,8 +1,6 @@
-import unittest
-from behave import given, when, then
 from main import *
 
-def test_winning_match(self):
+def test_winning_match():
     """
     Given similar secret code and a guess, 
     When calling the function combinations_comparison
@@ -11,11 +9,11 @@ def test_winning_match(self):
     code_length = 4
     secret = ["B", "R", "P", "Y"]
     guess = ["B", "r", "p", "Y"]
-    correct_position, wrong_position = combinations_comparison(code_length, secret, guess)
-    self.assertEqual(correct_position, code_length)
-    self.assertEqual(wrong_position, 0)
+    #correct_position, wrong_position = combinations_comparison(code_length, secret, guess)
+    assert(combinations_comparison(code_length, secret, guess)) == code_length, 0
+    #assert(wrong_position) == 0
 
-def test_no_correct_position(self):
+def test_no_correct_position():
     """
     Given different secret code and a guess
     When calling the function combinations_comparison
@@ -25,10 +23,10 @@ def test_no_correct_position(self):
     secret = ["B", "R", "P", "Y"]
     guess = ["g", "o", "v", "w"]
     correct_position, wrong_position = combinations_comparison(code_length, secret, guess)
-    self.assertEqual(correct_position, 0)
-    self.assertEqual(wrong_position, 0)
+    assert(correct_position) == 0
+    assert(wrong_position) == 0
 
-def test_all_colors_(self):
+def test_all_colors_():
     """
     Given secret same colors
     When calling the function
@@ -38,9 +36,9 @@ def test_all_colors_(self):
     secret = ["B", "B", "B", "B"]
     guess = ["B", "B", "P", "P"]
     correct_position, _ = combinations_comparison(code_length, secret, guess)
-    self.assertEqual(correct_position, 2)
+    assert(correct_position) == 2
 
-def test_4(self):
+def test_4():
     """
     Given
     When
@@ -50,10 +48,10 @@ def test_4(self):
     secret = ["B", "B", "B", "O"]
     guess = ["B", "B", "O", "B"]
     correct_position, wrong_position = combinations_comparison(code_length, secret, guess)
-    self.assertEqual(correct_position, 2)
-    self.assertEqual(wrong_position, 2)
+    assert(correct_position) == 2
+    assert(wrong_position) == 2
 
-def test_5(self):
+def test_5():
     """
     Given
     When
@@ -63,9 +61,9 @@ def test_5(self):
     secret = ["B", "B", "B", "O"]
     guess = ["B", "B", "B", "P"]
     correct_position, _ = combinations_comparison(code_length, secret, guess)
-    self.assertEqual(correct_position, 3)
+    assert(correct_position) == 3
 
-def test_6(self):
+def test_6():
     """
     Given 
     When 
@@ -75,10 +73,10 @@ def test_6(self):
     secret = ["B", "B", "O", "O"]
     guess = ["B", "O", "B", "O"]
     correct_position, wrong_position = combinations_comparison(code_length, secret, guess)
-    self.assertEqual(correct_position, 2)
-    self.assertEqual(wrong_position, 2)
+    assert(correct_position) == 2
+    assert(wrong_position) == 2
 
-def test_7(self):
+def test_7():
     """
     Given 
     When 
@@ -88,9 +86,9 @@ def test_7(self):
     secret = ["B", "R", "Y", "P"]
     guess = ["p", "y", "r", "b"]
     _, wrong_position = combinations_comparison(code_length, secret, guess)
-    self.assertEqual(wrong_position, 4)
+    assert(wrong_position) == 4
 
-def test_8(self):
+def test_8():
     """
     Given 
     When 
@@ -100,8 +98,8 @@ def test_8(self):
     secret = ["B", "R", "Y", "P"]
     guess = ["o", "b", "o", "o"]
     correct_position, wrong_position = combinations_comparison(code_length, secret, guess)
-    self.assertEqual(correct_position, 4)
-    self.assertEqual(wrong_position, 0)
+    assert(correct_position) == 0
+    assert(wrong_position) == 1
 
 # if __name__ == '__main__':
 #     test_winning_match()
