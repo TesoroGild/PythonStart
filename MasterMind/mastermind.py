@@ -55,6 +55,7 @@ def exit_game():
     exit()
 
 def mastermind():
+    colors = ["B", "R", "Y", "P", "G", "O", "V", "W"]
     print("Les couleurs pour cette partie sont : B, R, Y, P, G, O, V, W.")
     #Possible ways to generate the system_combination
     #system_combination = [random.choice(colors) for i in range(4)]
