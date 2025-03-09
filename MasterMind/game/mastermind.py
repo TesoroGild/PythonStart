@@ -1,13 +1,5 @@
-####################
-#      IMPORT      #
-####################
 import random
 
-
-
-####################
-#     FONCTIONS    #
-####################
 def welcome():
     print("Bienvenue au MasterMind.")
     print("Cette version a été crée dans le but d'apprendre le langage Python. Nous espérons qu'elle vous plaira.")
@@ -62,20 +54,12 @@ def mastermind():
     number_of_turns = 10 # Can be change after
     combination_length = length_choice()
     system_combination = random.choices(colors, k = combination_length)
-    # Entrees de test
-    # 1- G, O, V, W
-    # 2- P, Y, R, B
-    # 3- R, O, V, W
-    # 4- B, G, O, V
-
-    #system_combination = ["B", "B", "B", "B"]
-    #system_combination = ["B", "B", "B", "O"]
-    #system_combination = ["B", "B", "Y", "Y"]
-
     print(system_combination)
     is_user_combination_valid = False
+
     while number_of_turns > 0:
         print(f"Tours restants : {number_of_turns}")
+
         while not is_user_combination_valid:
             user_choice = input(f"Veuillez choisir une combinaison de {combination_length} couleurs : ")
             user_combination = list(user_choice)
@@ -83,21 +67,26 @@ def mastermind():
                 print(f"Combinaison de longueur {combination_length} requise.")
             else:
                 is_user_combination_valid = user_combination_validation(colors, combination_length, user_combination)
+        
         correct_position = combinations_comparison(combination_length, system_combination, user_combination)
+        
         if correct_position == combination_length:
             print("Bravo, vous avez gagné!")
             break
         else:
             number_of_turns -= 1
             is_user_combination_valid = False
+
     if number_of_turns == 0:
         print(f"Dommage, vous avez perdu. La bonne combinaison était : {system_combination}")
 
 def length_choice():
     combination_length = input("Quelle longueur souhaitez-vous pour les combinaisons de cette partie? (Minumum 4) : ")
+    
     while True:
         if combination_length.isdigit():
             tmp = int(combination_length)
+            
             if tmp < 4:
                 combination_length = input("Veuillez entrer un nombre >= 4 : ")
             else:
@@ -116,6 +105,7 @@ def combinations_comparison(combination_length, system_combination, user_combina
     correct_position = 0
     wrong_position = 0
     indexes_to_check = list(range(combination_length))
+    
     for i in range(combination_length):
         # print(f"i = {i}")
         # print(user_combination[i])

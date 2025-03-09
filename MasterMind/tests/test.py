@@ -1,4 +1,4 @@
-from main import *
+from game.mastermind import *
 
 def test_winning_match():
     """
@@ -9,9 +9,7 @@ def test_winning_match():
     code_length = 4
     secret = ["B", "R", "P", "Y"]
     guess = ["B", "r", "p", "Y"]
-    #correct_position, wrong_position = combinations_comparison(code_length, secret, guess)
     assert(combinations_comparison(code_length, secret, guess)) == code_length, 0
-    #assert(wrong_position) == 0
 
 def test_no_correct_position():
     """
@@ -22,9 +20,7 @@ def test_no_correct_position():
     code_length = 4
     secret = ["B", "R", "P", "Y"]
     guess = ["g", "o", "v", "w"]
-    correct_position, wrong_position = combinations_comparison(code_length, secret, guess)
-    assert(correct_position) == 0
-    assert(wrong_position) == 0
+    assert(combinations_comparison(code_length, secret, guess)) == 0, 0
 
 def test_all_colors_():
     """
@@ -35,8 +31,7 @@ def test_all_colors_():
     code_length = 4
     secret = ["B", "B", "B", "B"]
     guess = ["B", "B", "P", "P"]
-    correct_position, _ = combinations_comparison(code_length, secret, guess)
-    assert(correct_position) == 2
+    assert(combinations_comparison(code_length, secret, guess)) == 2, 0
 
 def test_4():
     """
@@ -47,9 +42,7 @@ def test_4():
     code_length = 4
     secret = ["B", "B", "B", "O"]
     guess = ["B", "B", "O", "B"]
-    correct_position, wrong_position = combinations_comparison(code_length, secret, guess)
-    assert(correct_position) == 2
-    assert(wrong_position) == 2
+    assert(combinations_comparison(code_length, secret, guess)) == 2, 2
 
 def test_5():
     """
@@ -60,8 +53,7 @@ def test_5():
     code_length = 4
     secret = ["B", "B", "B", "O"]
     guess = ["B", "B", "B", "P"]
-    correct_position, _ = combinations_comparison(code_length, secret, guess)
-    assert(correct_position) == 3
+    assert(combinations_comparison(code_length, secret, guess)) == 3, 0
 
 def test_6():
     """
@@ -72,9 +64,7 @@ def test_6():
     code_length = 4
     secret = ["B", "B", "O", "O"]
     guess = ["B", "O", "B", "O"]
-    correct_position, wrong_position = combinations_comparison(code_length, secret, guess)
-    assert(correct_position) == 2
-    assert(wrong_position) == 2
+    assert(combinations_comparison(code_length, secret, guess)) == 2, 2
 
 def test_7():
     """
@@ -85,8 +75,7 @@ def test_7():
     code_length = 4
     secret = ["B", "R", "Y", "P"]
     guess = ["p", "y", "r", "b"]
-    _, wrong_position = combinations_comparison(code_length, secret, guess)
-    assert(wrong_position) == 4
+    assert(combinations_comparison(code_length, secret, guess)) == 0, 4
 
 def test_8():
     """
@@ -97,9 +86,7 @@ def test_8():
     code_length = 4
     secret = ["B", "R", "Y", "P"]
     guess = ["o", "b", "o", "o"]
-    correct_position, wrong_position = combinations_comparison(code_length, secret, guess)
-    assert(correct_position) == 0
-    assert(wrong_position) == 1
+    assert(combinations_comparison(code_length, secret, guess)) == 0, 1
 
 # if __name__ == '__main__':
 #     test_winning_match()
