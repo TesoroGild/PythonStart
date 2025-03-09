@@ -24,9 +24,11 @@ if chosen_menu == "3":
     about()
 if chosen_menu == "1":
     replay = True
+
     while replay:
         mastermind()
         is_replay_input_valid = False
+        
         while not is_replay_input_valid:
             replay_input = input("Voulez-vous rejouer? (O/N) : ")
             if replay_input.upper() != "O" and replay_input.upper() != "N":
