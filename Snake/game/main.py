@@ -2,9 +2,11 @@ from tkinter import *
 from food import Food
 from snake import Snake
 
+#ADD MENU GAME
+
 GAME_WIDTH = 700
 GAME_HEIGHT = 700
-SPEED = 100
+SPEED = 150
 SPACE_SIZE = 30
 BODY_PARTS = 3
 SNAKE_COLOR = "#00FF00"
